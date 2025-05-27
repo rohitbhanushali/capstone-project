@@ -97,6 +97,11 @@ firebase-debug.*.log
 out/
 .vercel
 
+# AWS
+awscliv2.zip
+*.zip
+aws/
+
 # Misc
 .cache/
 .temp/

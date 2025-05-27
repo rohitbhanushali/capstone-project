@@ -132,6 +132,41 @@ capstone-project/
 - Load Balancers
 - Application servers in private subnets
 
+## Resource Breakdown
+
+### Development Environment
+| Resource Type | Configuration | Purpose |
+|--------------|---------------|----------|
+| VPC | CIDR: 10.0.0.0/16 | Main network for all resources |
+| Public Subnets | 2 AZs, CIDR: 10.0.1.0/24, 10.0.2.0/24 | For internet-facing resources |
+| Private Subnets | 2 AZs, CIDR: 10.0.3.0/24, 10.0.4.0/24 | For application and database servers |
+| RDS Instance | t3.micro, MySQL 8.0 | Main database for development |
+| EC2 Instances | t3.micro, 2 instances | Application servers |
+| Security Groups | Custom rules for each service | Network access control |
+| IAM Roles | Custom policies | Service permissions |
+
+### Staging Environment
+| Resource Type | Configuration | Purpose |
+|--------------|---------------|----------|
+| VPC | CIDR: 10.1.0.0/16 | Main network for all resources |
+| Public Subnets | 2 AZs, CIDR: 10.1.1.0/24, 10.1.2.0/24 | For internet-facing resources |
+| Private Subnets | 2 AZs, CIDR: 10.1.3.0/24, 10.1.4.0/24 | For application and database servers |
+| RDS Instance | t3.small, MySQL 8.0 | Main database for staging |
+| EC2 Instances | t3.small, 2 instances | Application servers |
+| Security Groups | Custom rules for each service | Network access control |
+| IAM Roles | Custom policies | Service permissions |
+
+### Production Environment
+| Resource Type | Configuration | Purpose |
+|--------------|---------------|----------|
+| VPC | CIDR: 10.2.0.0/16 | Main network for all resources |
+| Public Subnets | 3 AZs, CIDR: 10.2.1.0/24, 10.2.2.0/24, 10.2.3.0/24 | For internet-facing resources |
+| Private Subnets | 3 AZs, CIDR: 10.2.4.0/24, 10.2.5.0/24, 10.2.6.0/24 | For application and database servers |
+| RDS Instance | t3.medium, MySQL 8.0 | Main database for production |
+| EC2 Instances | t3.medium, 3 instances | Application servers |
+| Security Groups | Custom rules for each service | Network access control |
+| IAM Roles | Custom policies | Service permissions |
+
 ## Security Features
 
 - Network isolation using private subnets
