@@ -8,11 +8,6 @@ output "alb_zone_id" {
   value       = aws_lb.main.zone_id
 }
 
-output "app_security_group_id" {
-  description = "The ID of the application security group"
-  value       = aws_security_group.app.id
-}
-
 output "asg_name" {
   description = "The name of the Auto Scaling Group"
   value       = aws_autoscaling_group.main.name

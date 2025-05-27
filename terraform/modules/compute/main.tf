@@ -46,7 +46,7 @@ resource "aws_launch_configuration" "main" {
   name_prefix          = "${var.environment}-lc-"
   image_id             = var.ami_id
   instance_type        = var.instance_type
-  security_groups      = [aws_security_group.app.id]
+  security_groups      = [var.app_security_group_id]
   key_name             = var.key_name
   user_data            = templatefile("${path.module}/templates/user_data.sh", {
     environment = var.environment
@@ -98,30 +98,5 @@ resource "aws_security_group" "alb" {
 
   tags = {
     Name = "${var.environment}-alb-sg"
-  }
-}
-
-# Security Group for Application
-resource "aws_security_group" "app" {
-  name        = "${var.environment}-app-sg"
-  description = "Security group for application instances"
-  vpc_id      = var.vpc_id
-
-  ingress {
-    from_port       = 80
-    to_port         = 80
-    protocol        = "tcp"
-    security_groups = [aws_security_group.alb.id]
-  }
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  tags = {
-    Name = "${var.environment}-app-sg"
   }
 } 

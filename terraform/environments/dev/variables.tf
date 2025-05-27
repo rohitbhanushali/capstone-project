@@ -7,7 +7,7 @@ variable "environment" {
 variable "aws_region" {
   description = "AWS region"
   type        = string
-  default     = "us-east-1"
+  default     = "ap-south-1" # Mumbai region
 }
 
 variable "vpc_cidr" {
@@ -19,19 +19,19 @@ variable "vpc_cidr" {
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ["us-east-1a", "us-east-1b"]
+  default     = ["ap-south-1a", "ap-south-1b"] # Mumbai AZs
 }
 
 variable "db_instance_class" {
   description = "RDS instance class"
   type        = string
-  default     = "db.t3.micro"
+  default     = "db.t3.micro" # Free tier eligible
 }
 
 variable "db_allocated_storage" {
   description = "Allocated storage for RDS in GB"
   type        = number
-  default     = 20
+  default     = 20 # Free tier eligible
 }
 
 variable "db_name" {
@@ -55,13 +55,13 @@ variable "db_password" {
 variable "ami_id" {
   description = "AMI ID for EC2 instances"
   type        = string
-  default     = "ami-0c55b159cbfafe1f0" # Amazon Linux 2 AMI
+  default     = "ami-0a0c8eebcdd6dcbd0" # Ubuntu 22.04 LTS AMI in ap-south-1
 }
 
 variable "instance_type" {
   description = "Instance type for EC2 instances"
   type        = string
-  default     = "t3.micro"
+  default     = "t2.micro" # Free tier eligible
 }
 
 variable "key_name" {
@@ -72,17 +72,17 @@ variable "key_name" {
 variable "desired_capacity" {
   description = "Desired number of instances in the ASG"
   type        = number
-  default     = 2
+  default     = 1 # Reduced for free tier
 }
 
 variable "max_size" {
   description = "Maximum number of instances in the ASG"
   type        = number
-  default     = 4
+  default     = 2 # Reduced for free tier
 }
 
 variable "min_size" {
   description = "Minimum number of instances in the ASG"
   type        = number
-  default     = 1
+  default     = 1 # Reduced for free tier
 } 
